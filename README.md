@@ -1,5 +1,10 @@
 # MultiLangThesisTemplate
 
+# Table of Contents
+- [Preview](#preview)
+
+
+
 ### Preview
 
 | Polish | English |
