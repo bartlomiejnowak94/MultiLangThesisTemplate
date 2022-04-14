@@ -18,7 +18,21 @@ Ornaments are provided by: [Pgfornament](https://ctan.math.illinois.edu/macros/l
 |  ![Polish](https://raw.githubusercontent.com/bartlomiejnowak94/MultiLangThesisTemplate/main/example_fig/PL.PNG)   |  ![English](https://raw.githubusercontent.com/bartlomiejnowak94/MultiLangThesisTemplate/main/example_fig/ENG.PNG)  |
 
 ## Structure
-
+- articles (folder with attachments and included articles)
+   - Attachment 1.pdf 
+- example_fig (folder with preview of styles)
+   - style_exaple.PNG
+- figs (all figures included in the document)
+   - department_logo.pdf (picture included in title page)
+   - uni_banner.png (picture included in title page)
+   - uni_logo.png (picture included in title page)
+- tex
+   - all .tex files (Tile Page, Introduction, Results, ...) 
+- thesisclass 
+   - headstyles.tex (definitions of all styles for headers) 
+   - thesisclass.cls (definitions of general class)
+- ThesisTemplate.tex (main .tex file)
+- luximono.sty (file of the style required by memoir header styles)
 
 ## How to use it?
 #### Swaping between languages
