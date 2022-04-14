@@ -55,5 +55,5 @@ in file `ThesisTemplate.tex`. Possible parameters:
 \chapterstyle{BNowak2}
 \chapterstyle{BNowak3}
 ```
-All styles are presented in the [Gallery](https://github.com/bartlomiejnowak94/agent-based-modelling/tree/main/qvotermodel)
+All styles are presented in the [Gallery](https://github.com/bartlomiejnowak94/MultiLangThesisTemplate/tree/main/example_fig)
 
