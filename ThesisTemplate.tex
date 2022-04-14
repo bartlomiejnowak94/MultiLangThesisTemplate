@@ -1,0 +1,48 @@
+\documentclass[a4paper,12pt]{thesisclass/thesisclass}
+\langeng
+% \langpol
+\input{thesisclass/headstyles.tex}
+% \chapterstyle{default}
+% \chapterstyle{section}
+% \chapterstyle{article}
+% \chapterstyle{bianchi}
+% \chapterstyle{chappell}
+% \chapterstyle{dash}
+% \chapterstyle{lyhne}
+% \chapterstyle{madsen}
+% \chapterstyle{southall}
+% \chapterstyle{thatcher}
+% \chapterstyle{daleif1-red}
+% \chapterstyle{daleif1-black}
+% \chapterstyle{daleif3}
+% \chapterstyle{AlexanderGrebenkov}
+% \chapterstyle{VZ21}
+% \chapterstyle{VZ23}
+% \chapterstyle{VZ14}
+% \chapterstyle{VZ15b}
+% \chapterstyle{VZ34}
+% \chapterstyle{BNowak}
+% \chapterstyle{BNowak2}
+\chapterstyle{BNowak3}
+
+\pagestyle{fancy}
+
+\begin{document}
+    \input{tex/0TitlePage}\newpage\thispagestyle{plain}
+    \pagenumbering{gobble}
+    \input{tex/1Abstract}\newpage\cleardoublepage
+    \input{tex/2Projects}\newpage\cleardoublepage
+    \input{tex/3Epigraph}\newpage\cleardoublepage
+    % \input{tex/3Epigraph2}\newpage\cleardoublepage
+    \pagenumbering{arabic}
+    \begin{KeepFromToc}
+        \tableofcontents
+    \end{KeepFromToc}
+	\input{tex/4Introduction}\newpage\cleardoublepage
+    \input{tex/5Results}\newpage\cleardoublepage
+    \input{tex/6Conclusions}\newpage\cleardoublepage
+%     % \addcontentsline{toc}{chapter}{Bibliography}
+%     % \bibliography{bib/Literature}\newpage\cleardoublepage
+   \input{tex/7Appendix}\newpage\cleardoublepage
+    
+\end{document}

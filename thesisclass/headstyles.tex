@@ -1,0 +1,405 @@
+% AlexanderGrebenkov -------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+   \makechapterstyle{AlexanderGrebenkov}{%
+  \renewcommand{\chapterheadstart}{\vspace*{\beforechapskip}\hrule\medskip}
+  \renewcommand{\chapnamefont}{\normalfont\large\scshape}
+  \renewcommand{\chapnumfont}{\normalfont\large\scshape}
+  \renewcommand{\chaptitlefont}{\normalfont\large\scshape}
+  \renewcommand{\printchaptername}{\S}
+  \renewcommand{\chapternamenum}{ }
+  \renewcommand{\printchapternum}{\chapnumfont \thechapter}
+  \renewcommand{\afterchapternum}{. }
+  \renewcommand{\afterchaptertitle}{\par\nobreak\medskip\hrule\vskip
+\afterchapskip}
+\renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% daleif3 ------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\makeatletter
+\newif\iffelinenonum
+\newcommand\MyNumToName[1]{%
+  \ifcase#1\relax % case 0
+  \or \First \or \Second \or \Third \or \Fourth \or \Fifth%
+  \else Not implemented\fi}
+\makechapterstyle{daleif3}{
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\chapnamefont{\small\itshape\centering}
+  \setlength\midchapskip{7pt}
+  \renewcommand\printchapternum{%
+    \par\chapnamefont\decofourleft\enspace%
+    \ifanappendix
+    \appendixname\space\thechapter%
+    \else%
+    \MyNumToName{\thechapter}\space\chaptername%
+    \fi%
+    \/\enspace\decofourright}
+  \renewcommand\printchapternonum{\par\felinenonumtrue}
+  \renewcommand\chaptitlefont{\huge\itshape\centering}
+  \renewcommand\afterchapternum{%
+    \par\nobreak\vskip-5pt%
+  }
+  \renewcommand\afterchaptertitle{%
+    \par\vskip-2\midchapskip%
+    \rule\textwidth\normalrulethickness
+    \felinenonumfalse
+    \nobreak\vskip\afterchapskip%
+  }
+  \renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% VZ21 ---------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\makeatletter
+\setlength\midchapskip{7pt}
+\makechapterstyle{VZ21}{
+  \renewcommand\chapnamefont{\Large\scshape}
+  \renewcommand\chapnumfont{\Large\scshape\centering}
+  \renewcommand\chaptitlefont{\huge\bfseries\centering}
+  \renewcommand\printchaptertitle[1]{%
+    \setlength\tabcolsep{7pt}% used as indentation on both sides
+    \settowidth\@tempdimc{\chaptitlefont ##1}%
+    \setlength\@tempdimc{\textwidth-\@tempdimc-2\tabcolsep}%
+    \chaptitlefont
+    \ifdim\@tempdimc > 0pt\relax% one line
+    \begin{tabular}{c}
+      \toprule  ##1\\ \bottomrule
+    \end{tabular}
+    \else% two+ lines
+    \begin{tabular}{%
+        >{\chaptitlefont\arraybackslash}p{\textwidth-2\tabcolsep}}
+      \toprule ##1\\ \bottomrule
+    \end{tabular}
+    \fi
+  }
+  \renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% VZ23 ---------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\setlength\midchapskip{10pt}
+\makechapterstyle{VZ23}{
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\chapnumfont{\Huge\bfseries\centering}
+  \renewcommand\chaptitlefont{\Huge\scshape\centering}
+  \renewcommand\afterchapternum{%
+    \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+  \renewcommand\printchapternonum{%
+    \vphantom{\chapnumfont \thechapter}
+    \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+  \renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% daleif1-red --------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\definecolor{nicered}{rgb}{.647,.129,.149}
+\makeatletter
+\newlength\dlf@normtxtw
+\setlength\dlf@normtxtw{\textwidth}
+\def\myhelvetfont{\def\sfdefault{mdput}}
+\newsavebox{\feline@chapter}
+\newcommand\feline@chapter@marker[1][4cm]{%
+  \sbox\feline@chapter{%
+    \resizebox{!}{#1}{\fboxsep=1pt%
+      \colorbox{nicered}{\color{white}\bfseries\sffamily\thechapter}%
+    }}%
+  \rotatebox{90}{%
+    \resizebox{%
+      \heightof{\usebox{\feline@chapter}}+\depthof{\usebox{\feline@chapter}}}%
+    {!}{\scshape\so\@chapapp}}\quad%
+  \raisebox{\depthof{\usebox{\feline@chapter}}}{\usebox{\feline@chapter}}%
+}
+\newcommand\feline@chm[1][4cm]{%
+  \sbox\feline@chapter{\feline@chapter@marker[#1]}%
+  \makebox[0pt][l]{% aka \rlap
+    \makebox[1cm][r]{\usebox\feline@chapter}%
+  }}
+\makechapterstyle{daleif1-red}{
+  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
+  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{nicered}}
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{\null\hfill\feline@chm[2.5cm]\par}
+  \renewcommand\afterchapternum{\par\vskip\midchapskip}
+  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
+  \renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% daleif1-black ------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\definecolor{niceblack}{rgb}{0,0,0}
+\makeatletter
+\newlength\dlfb@normtxtw
+\setlength\dlfb@normtxtw{\textwidth}
+\def\myhelvetfont{\def\sfdefault{mdput}}
+\newsavebox{\felineb@chapter}
+\newcommand\felineb@chapter@marker[1][4cm]{%
+  \sbox\felineb@chapter{%
+    \resizebox{!}{#1}{\fboxsep=1pt%
+      \colorbox{niceblack}{\color{white}\bfseries\sffamily\thechapter}%
+    }}%
+  \rotatebox{90}{%
+    \resizebox{%
+      \heightof{\usebox{\felineb@chapter}}+\depthof{\usebox{\felineb@chapter}}}%
+    {!}{\scshape\so\@chapapp}}\quad%
+  \raisebox{\depthof{\usebox{\felineb@chapter}}}{\usebox{\felineb@chapter}}%
+}
+\newcommand\felineb@chm[1][4cm]{%
+  \sbox\felineb@chapter{\felineb@chapter@marker[#1]}%
+  \makebox[0pt][l]{% aka \rlap
+    \makebox[1cm][r]{\usebox\felineb@chapter}%
+  }}
+\makechapterstyle{daleif1-black}{
+  \renewcommand\chapnamefont{\normalfont\Large\scshape\raggedleft\so}
+  \renewcommand\chaptitlefont{\normalfont\huge\bfseries\scshape\color{niceblack}}
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{\null\hfill\felineb@chm[2.5cm]\par}
+  \renewcommand\afterchapternum{\par\vskip\midchapskip}
+  \renewcommand\printchaptertitle[1]{\chaptitlefont\raggedleft ##1\par}
+  \renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% VZ14 ---------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\makeatletter
+\newcommand\thickhrulefill{\leavevmode \leaders \hrule height 1ex \hfill \kern \z@}
+\setlength\midchapskip{10pt}
+\makechapterstyle{VZ14}{
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\chapnamefont{\Large\scshape}
+  \renewcommand\printchapternum{%
+    \chapnamefont\null\thickhrulefill\quad
+    \@chapapp\space\thechapter\quad\thickhrulefill}
+  \renewcommand\printchapternonum{%
+    \par\thickhrulefill\par\vskip\midchapskip
+    \hrule\vskip\midchapskip
+  }
+  \renewcommand\chaptitlefont{\Huge\scshape\centering}
+  \renewcommand\afterchapternum{%
+    \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+  \renewcommand\afterchaptertitle{%
+    \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
+  \renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% VZ15b --------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\newcommand\mylleaf{\ding{'247}}
+\newcommand\myrleaf{\reflectbox{\mylleaf}}
+\newcommand\MyNumToNamev[1]{%
+  \ifcase#1\relax % case 0
+  \or \First \or \Second \or \Third \or \Fourth \or \Fifth%
+  \else Not implemented\fi}
+\makeatletter
+\setlength\midchapskip{10pt}
+\makechapterstyle{VZ15b}{
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\chapnamefont{\Large\scshape}
+  \renewcommand\printchapternum{%
+    \chapnamefont\null\hfill\mylleaf\quad
+    \ifanappendix
+    \appendixname\space\thechapter\quad\myrleaf\hfill\null%
+    \else%
+    \MyNumToNamev{\thechapter}\space\@chapapp\quad\myrleaf\hfill\null
+    \fi
+  }
+  \renewcommand\printchapternonum{%
+    \par\hrule\vskip\midchapskip}
+  \renewcommand\chaptitlefont{\Huge\scshape\centering}
+  \renewcommand\afterchapternum{%
+    \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+  \renewcommand\afterchaptertitle{%
+    \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
+  \renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% VZ34 ---------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\newif\ifNoChapNumber
+\makeatletter
+\makechapterstyle{VZ34}{
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\printchapternum{}
+  \renewcommand\chapnumfont{\Huge\bfseries}
+  \renewcommand\chaptitlefont{\Huge\bfseries\raggedright}
+  \renewcommand\printchaptertitle[1]{%
+    \begin{tabular}{@{}p{1cm}|!{\quad}p{\textwidth-1cm-2em-4\tabcolsep }}
+      \ifNoChapNumber\relax\else\chapnumfont \thechapter\fi
+      & \chaptitlefont ##1
+    \end{tabular}
+    \NoChapNumberfalse
+  }
+  \renewcommand\printchapternonum{\NoChapNumbertrue}
+  \renewcommand{\pfbreakdisplay}{$$\ast\quad\ast\quad\ast$$}
+}
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% BNowak -------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\newcommand\myleftorn{\pgfornament[scale=0.4,ydelta=-5pt]{21}}
+\newcommand\myrightorn{\pgfornament[scale=0.4,ydelta=-5pt]{23}}
+\newcommand\MyNumToNameb[1]{%
+  \ifcase#1\relax % case 0
+  \or \First \or \Second \or \Third \or \Fourth \or \Fifth%
+  \else Not implemented\fi}
+\makeatletter
+\setlength\midchapskip{10pt}
+\makechapterstyle{BNowak}{
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\chapnamefont{\Large\scshape}
+  \renewcommand\printchapternum{%
+    \chapnamefont\null\hfill\myleftorn\quad
+    \ifanappendix
+    \appendixname\space\thechapter\quad\myrightorn\hfill\null%
+    \else%
+    \MyNumToNameb{\thechapter}\space\@chapapp\quad\myrightorn\hfill\null
+    \fi
+  }
+  \renewcommand\printchapternonum{%
+    \par\hrule\vskip\midchapskip}
+  \renewcommand\chaptitlefont{\Huge\scshape\centering}
+  \renewcommand\afterchapternum{%
+    \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+  \renewcommand\afterchaptertitle{%
+    \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
+  \renewcommand{\pfbreakdisplay}{\begin{center}\pgfornament[scale=0.2]{21}\pgfornament[scale=0.2]{23}\end{center}\vspace{1ex}}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% BNowak2 ------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\newcommand\myleftornb{\pgfornament[scale=0.4,ydelta=-5pt]{17}}
+\newcommand\myrightornb{\pgfornament[scale=0.4,ydelta=-5pt]{18}}
+\newcommand\MyNumToNamec[1]{%
+  \ifcase#1\relax % case 0
+  \or \First \or \Second \or \Third \or \Fourth \or \Fifth%
+  \else Not implemented\fi}
+\makeatletter
+\setlength\midchapskip{10pt}
+\makechapterstyle{BNowak2}{
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\chapnamefont{\Large\scshape}
+  \renewcommand\printchapternum{%
+    \chapnamefont\null\hfill\myleftornb\quad
+    \ifanappendix
+    \appendixname\space\thechapter\quad\myrightornb\hfill\null%
+    \else%
+    \MyNumToNamec{\thechapter}\space\@chapapp\quad\myrightornb\hfill\null
+    \fi
+  }
+  \renewcommand\printchapternonum{%
+    \par\hrule\vskip\midchapskip}
+  \renewcommand\chaptitlefont{\Huge\scshape\centering}
+  \renewcommand\afterchapternum{%
+    \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+  \renewcommand\afterchaptertitle{%
+    \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
+  \renewcommand{\pfbreakdisplay}{\begin{center}\pgfornament[scale=0.2]{17}\pgfornament[scale=0.2]{18}\end{center}\vspace{1ex}}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
+
+% BNowak3 ------------------------------------------------------------------------------------------
+\let\STARTCODE\relax 
+\let\STOPCODE\relax 
+\STARTCODE
+\newcommand\myleftornc{\pgfornament[scale=0.4,ydelta=-5pt]{11}}
+\newcommand\myrightornc{\pgfornament[scale=0.4,ydelta=-5pt]{14}}
+\newcommand\MyNumToNamed[1]{%
+  \ifcase#1\relax % case 0
+  \or \First \or \Second \or \Third \or \Fourth \or \Fifth%
+  \else Not implemented\fi}
+\makeatletter
+\setlength\midchapskip{10pt}
+\makechapterstyle{BNowak3}{
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchaptername{}
+  \renewcommand\chapnamefont{\Large\scshape}
+  \renewcommand\printchapternum{%
+    \chapnamefont\null\hfill\myleftornc\quad
+    \ifanappendix
+    \appendixname\space\thechapter\quad\myrightornc\hfill\null%
+    \else%
+    \MyNumToNamed{\thechapter}\space\@chapapp\quad\myrightornc\hfill\null
+    \fi
+  }
+  \renewcommand\printchapternonum{%
+    \par\hrule\vskip\midchapskip}
+  \renewcommand\chaptitlefont{\Huge\scshape\centering}
+  \renewcommand\afterchapternum{%
+    \par\nobreak\vskip\midchapskip\hrule\vskip\midchapskip}
+  \renewcommand\afterchaptertitle{%
+    \par\vskip\midchapskip\hrule\nobreak\vskip\afterchapskip}
+  \renewcommand{\pfbreakdisplay}{\begin{center}\pgfornament[scale=0.1]{13}\end{center}\vspace{1ex}}
+}
+\makeatother
+\STOPCODE
+\setlength\afterchapskip {\onelineskip }
+\setlength\beforechapskip {\onelineskip }
