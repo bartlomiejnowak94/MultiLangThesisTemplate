@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{thesisclass/thesisclass}
+\documentclass[]{thesisclass/thesisclass}
 \langeng
 % \langpol
 \input{thesisclass/headstyles.tex}
@@ -24,25 +24,31 @@
 % \chapterstyle{BNowak}
 % \chapterstyle{BNowak2}
 \chapterstyle{BNowak3}
+\bibliographystyle{myieeetran}
+\usepackage{CJKutf8}
 
-\pagestyle{fancy}
+\pagestyle{myruled}
+\newcommand{\newstuff}[1]{\color{blue}{#1}\color{black}}
 
 \begin{document}
     \input{tex/0TitlePage}\newpage\thispagestyle{plain}
     \pagenumbering{gobble}
-    \input{tex/1Abstract}\newpage\cleardoublepage
-    \input{tex/2Projects}\newpage\cleardoublepage
-    \input{tex/3Epigraph}\newpage\cleardoublepage
-    % \input{tex/3Epigraph2}\newpage\cleardoublepage
+    \input{tex/1Projects}\newpage\cleardoublepage
+    \input{tex/2Epigraph}\newpage\cleardoublepage
+    \input{tex/2Epigraph2}\newpage\cleardoublepage
     \pagenumbering{arabic}
+    \input{tex/3Acknowledgements}\newpage\cleardoublepage
+    \input{tex/4Abstract}\newpage\cleardoublepage
+    \input{tex/4Abstract_PL}\newpage\cleardoublepage
     \begin{KeepFromToc}
         \tableofcontents
     \end{KeepFromToc}
-	\input{tex/4Introduction}\newpage\cleardoublepage
-    \input{tex/5Results}\newpage\cleardoublepage
-    \input{tex/6Conclusions}\newpage\cleardoublepage
-%     % \addcontentsline{toc}{chapter}{Bibliography}
-%     % \bibliography{bib/Literature}\newpage\cleardoublepage
-   \input{tex/7Appendix}\newpage\cleardoublepage
+	\input{tex/5Introduction}\newpage\cleardoublepage
+    \input{tex/6Objectives}\newpage\cleardoublepage
+    \input{tex/7Results}\newpage\cleardoublepage
+    \input{tex/8Conclusions}\newpage\cleardoublepage
+    \bibliography{tex/9literature}\newpage\cleardoublepage
+    % \printbibliography\newpage\cleardoublepage
+    \input{tex/10Appendix}\newpage\cleardoublepage
     
 \end{document}
