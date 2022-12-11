@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{thesisclass}
+\ProvidesClass{thesisclass/thesisclass}
 
 \LoadClass[a4paper,12pt,oneside]{memoir}
 
@@ -25,15 +25,9 @@
 \RequirePackage{amsthm}     
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
-\RequirePackage{pdfpages}
 \RequirePackage{epigraph}
 \RequirePackage{csquotes}
 \RequirePackage{hyperref}
-\RequirePackage{appendix}
-\RequirePackage{cite}
-\RequirePackage{lipsum}
-\RequirePackage{fancyhdr}
-\RequirePackage{graphicx}   
 \RequirePackage{ifluatex}   
 \RequirePackage{ifpdf}      
 \RequirePackage{ifxetex}    
@@ -59,9 +53,10 @@
 \RequirePackage{adforn}
 \RequirePackage{etoolbox}
 \RequirePackage{pgfornament}
-\RequirePackage[margin=1in,headheight=13.6pt]{geometry}
+\RequirePackage[margin=1in,headheight=15pt]{geometry}
+\RequirePackage[noadjust]{cite}
 
-\bibliographystyle{ieeetr}
+% \bibliographystyle{IEEEtran}
 
 \RequirePackage{hyperref}
 \hypersetup{
@@ -110,8 +105,6 @@
 	\newcommand{\Fifth}{Piąty}
 	% add more if you want
 	
-	
-
 	\AtBeginDocument{
 		\renewcommand{\listfigurename}{Spis rysunków}
 		\renewcommand{\listtablename}{Spis tabel}
@@ -163,4 +156,49 @@
 }
 
 
-% Commands -----------------------------------------------------------------------------------------
+% Section headers fancy -----------------------------------------------------------------------------------------
+\renewcommand{\chaptermark}[1]{%
+\ifanappendix
+\markboth{\textsc{\appendixname\space\thechapter:\ #1}}{}
+\else%
+\markboth{\textsc{\MyNumToNamed{\thechapter}\space\@chapapp:\ #1}}{}
+\fi
+}
+
+\renewcommand{\sectionmark}[1]{
+	\markright{\textsc{Section \thesection}}
+}
+
+\renewcommand{\subsectionmark}[1]{%
+  \markright{\textsc{Section \thesubsection}}%
+}
+
+\setsecnumdepth{subsection} %make numbered subsections
+\setcounter{tocdepth}{5}
+
+
+\makepagestyle{myruled}
+%add header rule
+\makeheadrule {myruled}{\textwidth}{\normalrulethickness}
+%add foot rule
+% \makefootrule {myruled}{\textwidth}{\normalrulethickness}{\footruleskip}
+\makeevenhead {myruled}{\leftmark}{}{\rightmark}
+\makeoddhead {myruled}{\leftmark}{}{\rightmark}
+
+\makeevenfoot {myruled}{}{\thepage} {}
+\makeoddfoot {myruled}{}{\thepage} {}
+
+\makeatletter % because of \@chapapp
+\makepsmarks {myruled}{
+\nouppercaseheads
+% \createmark {chapter} {both} {shownumber}{\@chapapp\ }{. \ }
+% \createmark {section} {right}{shownumber}{} {. \ }
+% \createmark {subsection} {right}{shownumber}{} {. \ }
+% \createmark {subsubsection}{right}{shownumber}{} {. \ }
+% \createplainmark {toc} {both} {\contentsname}
+% \createplainmark {lof} {both} {\listfigurename}
+% \createplainmark {lot} {both} {\listtablename}
+\createplainmark {bib} {both} {\textsc{\bibname}}
+% \createplainmark {index} {both} {\indexname}
+% \createplainmark {glossary} {both} {\glossaryname}
+}

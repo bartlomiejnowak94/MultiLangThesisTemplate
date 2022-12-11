@@ -1,14 +1,18 @@
 # MultiLangThesisTemplate
-Multi language LaTeX Thesis Template. Includes few styles and template in two languages: Polish and English.
+Multi language LaTeX Thesis Template. Example of thesis written with this template can be visible [here](https://bartlomiejnowak94.github.io/docs/bnowakthesis.pdf)
+
+Includes few styles and template in two languages: Polish and English.
 Style of chapters (Excluding BNowak styles) are provides by: [Memoir Chapter Style](http://tug.ctan.org/info/MemoirChapStyles/MemoirChapStyles.pdf)
 Ornaments are provided by: [Pgfornament](https://ctan.math.illinois.edu/macros/latex/contrib/tkz/pgfornament/doc/ornaments.pdf)
 
 # Table of Contents
-- [Preview](#preview)
-- [Structure](#structure)
-- [How to use it?](#how-to-use-it)
-   - [Swaping between languages](#swaping-between-languages)
-   - [Swaping header styles](#swaping-header-styles)
+- [MultiLangThesisTemplate](#multilangthesistemplate)
+- [Table of Contents](#table-of-contents)
+  - [Preview](#preview)
+  - [Structure](#structure)
+  - [How to use it?](#how-to-use-it)
+      - [Swaping between languages](#swaping-between-languages)
+      - [Swaping header styles](#swaping-header-styles)
 
 
 ## Preview
